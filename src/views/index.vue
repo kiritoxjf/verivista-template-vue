@@ -1,8 +1,13 @@
-<script setup lang="ts" name="index"></script>
+<script setup lang="ts" name="index">
+import { useRouter } from 'vue-router'
+
+const navigate = useRouter()
+
+navigate.push('/navigation')
+</script>
 
 <template>
-  <div>Index</div>
-  <RouterView />
+  <div>跳转导航页</div>
 </template>
 
 <style lang="less" scoped></style>
