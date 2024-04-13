@@ -1,4 +1,4 @@
-<script setup lang="ts" name="index">
+<script setup lang="ts" name="refection-carousel">
 const images: string[] = [
   'https://images.wallpaperscraft.com/image/single/sakura_art_sky_122545_480x800.jpg',
   'https://images.wallpaperscraft.com/image/single/piano_silhouette_space_156662_480x800.jpg',

@@ -4,7 +4,7 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import VueDevTools from 'vite-plugin-vue-devtools'
 import VueSetupExtend from 'vite-plugin-vue-setup-extend'
-// import { readFileSync } from 'node:fs'
+import { readFileSync } from 'node:fs'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -12,10 +12,10 @@ export default defineConfig({
     // dev环境端口号
     port: 8000,
     // dev环境SSL证书
-    // https: {
-    //   key: readFileSync('证书密钥路径'),
-    //   cert: readFileSync('证书文件路径')
-    // }
+    https: {
+      key: readFileSync('./src/assets/PrivateKey.key'),
+      cert: readFileSync('./src/assets/Certificate.cer')
+    },
     // 反向代理
     proxy: {
       '/api': {
