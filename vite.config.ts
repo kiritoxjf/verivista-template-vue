@@ -5,6 +5,8 @@ import vue from '@vitejs/plugin-vue'
 import VueDevTools from 'vite-plugin-vue-devtools'
 import VueSetupExtend from 'vite-plugin-vue-setup-extend'
 import { readFileSync } from 'node:fs'
+import { visualizer } from 'rollup-plugin-visualizer'
+import { autoComplete, Plugin as importToCDN } from 'vite-plugin-cdn-import'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -26,7 +28,57 @@ export default defineConfig({
       }
     }
   },
-  plugins: [vue(), VueDevTools(), VueSetupExtend()],
+  plugins: [
+    vue(),
+    VueDevTools(),
+    VueSetupExtend(),
+    visualizer({
+      open: true,
+      gzipSize: true,
+      brotliSize: true,
+      filename: 'buildStats.html'
+    }),
+    importToCDN({
+      modules: [
+        autoComplete('vue'),
+        {
+          name: 'vue-router',
+          var: 'VueRouter',
+          path: 'https://unpkg.com/vue-router@4.3.0/dist/vue-router.global.prod.js'
+        },
+        {
+          name: 'vue-demi',
+          var: 'VueDemi',
+          path: 'https://unpkg.com/vue-demi@0.14.7/lib/index.iife.js'
+        },
+        {
+          name: 'pinia',
+          var: 'Pinia',
+          path: 'https://unpkg.com/pinia@2.1.7/dist/pinia.iife.js'
+        },
+        {
+          name: 'dayjs',
+          var: 'dayjs',
+          path: [
+            'https://unpkg.com/dayjs@1.11.10/dayjs.min.js',
+            'https://unpkg.com/dayjs@1.11.10/plugin/customParseFormat.js',
+            'https://unpkg.com/dayjs@1.11.10/plugin/weekday.js',
+            'https://unpkg.com/dayjs@1.11.10/plugin/localeData.js',
+            'https://unpkg.com/dayjs@1.11.10/plugin/weekOfYear.js',
+            'https://unpkg.com/dayjs@1.11.10/plugin/weekYear.js',
+            'https://unpkg.com/dayjs@1.11.10/plugin/advancedFormat.js',
+            'https://unpkg.com/dayjs@1.11.10/plugin/quarterOfYear.js'
+          ]
+        },
+        {
+          name: 'ant-design-vue',
+          var: 'antd',
+          path: 'https://unpkg.com/ant-design-vue@4.1.2/dist/antd.min.js',
+          css: 'https://unpkg.com/ant-design-vue@4.1.2/dist/reset.css'
+        }
+      ]
+    })
+  ],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
