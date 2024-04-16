@@ -28,5 +28,11 @@ body,
   flex-direction: column;
   background-color: #000;
   color: #eae5e3;
+  .flex-box {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+  }
 }
 </style>

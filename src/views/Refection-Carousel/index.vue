@@ -10,7 +10,7 @@ const images: string[] = [
 </script>
 
 <template>
-  <div class="refection-carousel">
+  <div class="refection-carousel flex-box">
     <div class="carousel-container">
       <div class="card" v-for="(image, index) in images" :key="index" :style="`--i: ${index}`">
         <img :src="image" :alt="image" />
@@ -29,10 +29,6 @@ const images: string[] = [
   }
 }
 .refection-carousel {
-  display: flex;
-  flex: 1;
-  justify-content: center;
-  align-items: center;
   position: relative;
   perspective: 200rem; // 视图深度
   overflow: hidden;

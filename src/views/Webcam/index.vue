@@ -95,7 +95,7 @@ onMounted(() => {
 })
 </script>
 <template>
-  <div class="webcam">
+  <div class="webcam flex-box">
     <div class="box">
       <video ref="videoRef" id="video" autoplay></video>
       <div id="operation">
@@ -158,10 +158,6 @@ onMounted(() => {
 </template>
 <style lang="less" scoped>
 .webcam {
-  display: flex;
-  flex: 1;
-  justify-content: center;
-  align-items: center;
   .box {
     display: flex;
     width: 32rem;

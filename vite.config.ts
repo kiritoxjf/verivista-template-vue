@@ -40,7 +40,11 @@ export default defineConfig({
     }),
     importToCDN({
       modules: [
-        autoComplete('vue'),
+        {
+          name: 'vue',
+          var: 'Vue',
+          path: 'https://unpkg.com/vue@3.4.22/dist/vue.global.prod.js'
+        },
         {
           name: 'vue-router',
           var: 'VueRouter',
