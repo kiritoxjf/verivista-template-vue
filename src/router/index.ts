@@ -27,22 +27,24 @@ const arrPages: iPage[] = Object.entries(pages).map(([path, page]) => ({
 // 动态初始化路由配置 Routes
 const generateRoutes = (arr: iPage[], level: number, parent?: string): Array<RouteRecordRaw> => {
   const routes = arr.filter((item) => item.level === level && (!parent || item.parent === parent))
-  return routes.map((item) => {
-    const path = item.path?.replace('../views', '').replace('/page.ts', '').toLowerCase() || '/'
-    const name = item.name
-    const component = item.path ? comps[item.path.replace('page.ts', 'index.vue')] : null
-    const meta = {
-      title: item.title
-    }
-    const children = generateRoutes(arr, level + 1, item.parent)
-    return {
-      path,
-      name,
-      component,
-      meta,
-      children
-    }
-  })
+  return routes
+    .filter((item) => (item.hidden ? false : true))
+    .map((item) => {
+      const path = item.path?.replace('../views', '').replace('/page.ts', '').toLowerCase() || '/'
+      const name = item.name
+      const component = item.path ? comps[item.path.replace('page.ts', 'index.vue')] : null
+      const meta = {
+        title: item.title
+      }
+      const children = generateRoutes(arr, level + 1, item.parent)
+      return {
+        path,
+        name,
+        component,
+        meta,
+        children
+      }
+    })
 }
 
 export const routes: Array<RouteRecordRaw> = generateRoutes(arrPages, 1)

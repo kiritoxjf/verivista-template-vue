@@ -5,4 +5,5 @@ export interface iPage {
   name: string // 路由name
   level: number // 路由等级
   title?: string // 所需传参，此处以title为例
+  hidden?: boolean // 是否隐藏
 }
