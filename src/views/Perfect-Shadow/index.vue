@@ -39,6 +39,7 @@ const type = ref<'normal' | 'perfect'>('normal')
       padding: 5px 10px;
       background-color: transparent;
       cursor: pointer;
+      box-shadow: 0 0 20px rgba(222, 222, 222, 0.5);
     }
   }
   .normal {

@@ -1,4 +1,4 @@
-import './assets/main.css'
+import './main.css'
 
 import * as Vue from 'vue'
 import * as Pinia from 'pinia'
