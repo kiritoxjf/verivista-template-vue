@@ -93,6 +93,9 @@ export default defineConfig({
       less: {
         javascriptEnabled: true,
         math: 'always'
+      },
+      scss: {
+        additionalData: '@import "@/styles/mixin.scss";'
       }
     }
   },

@@ -6,10 +6,10 @@ const navigate = useRouter()
 </script>
 
 <template>
-  <div class="navigation">
+  <div class="flex flex-1">
     <div v-for="route in routes" :key="route.name">
       <div
-        class="card"
+        class="flex justify-center items-center h-4 m-2 p-4 border rounded-md bg-blue-dark cursor-pointer hover:bg-blue"
         v-if="route.path !== '/navigation' && route.path !== '/'"
         @click="
           () => {
@@ -22,25 +22,3 @@ const navigate = useRouter()
     </div>
   </div>
 </template>
-
-<style lang="less" scoped>
-.navigation {
-  display: flex;
-  flex: 1;
-  .card {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 2rem;
-    margin: 1rem;
-    padding: 1rem;
-    border: 0.1rem solid #eae5e3;
-    border-radius: 1rem;
-    background-color: #106898;
-    cursor: pointer;
-  }
-  .card:hover {
-    background-color: #06436f;
-  }
-}
-</style>
